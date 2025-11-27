@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../auth/login_screen.dart';
+import 'package:jelajah_nusantara/screens/articles/my_articles_screen.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -109,14 +110,14 @@ class WaveClipperBottom extends CustomClipper<Path> {
     path.moveTo(0, size.height - 80);
 
     path.quadraticBezierTo(
-      size.width * 2 / 5,
+      size.width / 4,
       size.height + 20,
-      size.width * 2 / 5,
+      size.width / 2,
       size.height - 50,
     );
 
     path.quadraticBezierTo(
-        size.width * 2 / 5, size.height - 130, size.width, size.height - 50);
+        size.width * 2 / 5, size.height - 130, size.width, size.height - 80);
 
     path.lineTo(size.width, 0);
     path.lineTo(0, 0);

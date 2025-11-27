@@ -66,7 +66,7 @@ class _MyArticlesScreenState extends State<MyArticlesScreen> {
                   children: [
                     CircleAvatar(
                       backgroundImage: const AssetImage(
-                        'assets/images/profile.png',
+                        'assets/images/kucing.png',
                       ),
                       radius: 25,
                     ),

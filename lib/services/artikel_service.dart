@@ -33,7 +33,7 @@ class ArtikelService {
     );
   }
 
-  static Future<http.StreamedResponse> createArtikel(
+  static Future<http.StreamedResponse> createArtikel( 
     File image,
     String title,
     String description,
@@ -75,7 +75,7 @@ class ArtikelService {
     request.headers['Authorization'] = 'Bearer $token';
 
     if (title != null && title.isNotEmpty) {
-      request.fields['tittle'] = title;
+      request.fields['title'] = title;
     }
 
     if (description != null && description.isNotEmpty) {

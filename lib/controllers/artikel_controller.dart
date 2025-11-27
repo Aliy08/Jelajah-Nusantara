@@ -83,7 +83,7 @@ class ArtikelController {
         context, 
         MaterialPageRoute(builder: (context) => const BottomNavbar()),
       );
-      return objectResponse['message'] ?? "Update daata berhasil";
+      return objectResponse['message'] ?? "Update data berhasil";
     } else if (response.statusCode == 400) {
       final firstError = objectResponse['errors']?[0];
       return firstError?['message'] ?? "Terjadi kesalahan";

@@ -14,7 +14,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
   int _selectedIndex = 0;
 
   List<Widget> get _pages => [
-    HomeScreen(),
+    HomeScreen(), 
     MyArticlesScreen(),
     ProfileScreen(),
 

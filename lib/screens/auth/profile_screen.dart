@@ -6,10 +6,16 @@ import '../../screens/articles/my_articles_screen.dart';
 import '../../controllers/artikel_controller.dart';
 import '../../widgets/grid_artikel_populer.dart';
 import '../../controllers/auth_controller.dart';
+import '../../screens/auth/edit_profile_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,12 +41,13 @@ class ProfileScreen extends StatelessWidget {
                     CircleAvatar(
                       radius: 50,
                       backgroundImage: const AssetImage(
-                        'assets/images/profile.png',
+                        'assets/images/kucing.png',
                       ),
                     ),
                     SizedBox(height: 5),
                     FutureBuilder(
-                      future: AuthController.getProfile(),
+                      future: AuthController
+                          .getLocalProfile(), // ← PERBAIKAN TERPENTING
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -70,6 +77,7 @@ class ProfileScreen extends StatelessWidget {
                         }
                       },
                     ),
+
                     SizedBox(height: 20),
                     // End Profile
 
@@ -78,7 +86,16 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         // Button edit profile
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const EditProfileScreen(),
+                              ),
+                            ).then((_) {
+                              setState(() {});
+                            });
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0XFFD1A824),
                             minimumSize: Size(115, 60),

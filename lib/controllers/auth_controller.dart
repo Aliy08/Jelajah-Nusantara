@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
 
 import '../screens/auth/login_screen.dart';
 import '../services/auth_services.dart';
 import '../widgets/bottom_navbar.dart';
 import '../models/user_model.dart';
+import 'package:http/http.dart' as http;
+
 
 class AuthController {
   static Future<String> register(
@@ -73,7 +76,7 @@ class AuthController {
       final data = responseData['data'];
       return User.fromJson(data);
     } else {
-      throw (responseData['message'] ?? "Gagal memuar data user");
+      throw (responseData['message'] ?? "Gagal memuat data user");
     }
   }
 
@@ -91,5 +94,25 @@ class AuthController {
       return (responseData['message'] ?? "Terjadi kesalahan");
     }
   }
+
+// UPDATE PROFILE SECARA LOCAL
+static Future<String> updateProfileLocal({
+  required String name,
+  required String username,
+}) async {
+  return await AuthServices.saveLocalProfile(name, username);
+}
+
+// GET PROFILE DARI LOCAL
+static Future<User> getLocalProfile() async {
+  final data = await AuthServices.getLocalProfile();
+
+  return User(
+    id: "0", // harus string, karena model kamu butuh String id
+    name: data['name']!,
+    username: data['username']!,
+  );
+}
+
 
 }

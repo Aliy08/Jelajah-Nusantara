@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     loadArtikel();
     _futureArtikelPopuler = ArtikelController.getArtikel(1, 4);
   }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     CircleAvatar(
                       backgroundImage: const AssetImage(
-                        'assets/images/profile.png',
+                        'assets/images/kucing.png',
                       ),
                       radius: 25,
                     ),
